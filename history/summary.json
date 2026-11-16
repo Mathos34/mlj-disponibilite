@@ -70,25 +70,5 @@
     "timeMonth": 1142,
     "timeYear": 1142,
     "dailyMinutesDown": {}
-  },
-  {
-    "name": "Essai de l'alerte (à ignorer)",
-    "url": "https://www.mljdigital.fr/api/health",
-    "icon": "https://icons.duckduckgo.com/ip3/www.mljdigital.fr.ico",
-    "slug": "essai-de-l-alerte-a-ignorer",
-    "status": "down",
-    "uptime": "69.81%",
-    "uptimeDay": "69.81%",
-    "uptimeWeek": "69.81%",
-    "uptimeMonth": "69.81%",
-    "uptimeYear": "69.81%",
-    "time": 487,
-    "timeDay": 487,
-    "timeWeek": 487,
-    "timeMonth": 487,
-    "timeYear": 487,
-    "dailyMinutesDown": {
-      "2026-11-16": 0
-    }
   }
 ]

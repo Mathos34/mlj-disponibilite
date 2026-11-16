@@ -1,0 +1,63 @@
+# Disponibilité de MLJ Digital (mljdigital.fr), relevée par Upptime depuis GitHub Actions toutes les 5 minutes.
+# La sonde tourne HORS de la VM OVH : si la VM, Caddy ou une base tombe, elle le voit quand même.
+# Chaque relevé est un commit de `history/` : l'historique du dépôt EST le registre de disponibilité.
+# Modèle : Mathos34/milo-disponibilite (la sonde de Milo), mêmes workflows Upptime v1.44.1.
+# Mode d'emploi côté MLJ : docs/DEPLOIEMENT_OVH.md du dépôt Mathos34/mlj-digital.
+owner: Mathos34
+repo: mlj-disponibilite
+
+sites:
+  # Le site vitrine ET sa base : `/api/health?db=1` répond 503 si la base du site ne répond pas.
+  - name: Site MLJ Digital
+    url: https://www.mljdigital.fr/api/health?db=1
+    expectedStatusCodes:
+      - 200
+  # MLJ Assistant de bout en bout : `/health` du front interroge le backend, qui vérifie sa base, Qdrant et le
+  # stockage (503 si l'un d'eux tombe).
+  - name: MLJ Assistant
+    url: https://assistant.mljdigital.fr/health
+    expectedStatusCodes:
+      - 200
+  # L'Espace : son serveur répond (`/api/sante` ne touche pas la base).
+  - name: Espace MLJ
+    url: https://espace.mljdigital.fr/api/sante
+    expectedStatusCodes:
+      - 200
+  # Le CRM n'a pas de sonde publique : sa page de connexion renvoie (307) vers la connexion centrale quand il tourne ;
+  # Caddy répond 502 quand il est tombé.
+  - name: CRM MLJ
+    url: https://crm.mljdigital.fr/connexion
+    expectedStatusCodes:
+      - 200
+      - 307
+
+# Une panne ouvre une issue assignée : GitHub prévient par courriel (et sur l'application mobile). Les autres
+# personnes qui suivent le dépôt (« Watch ») reçoivent aussi chaque issue.
+assignees:
+  - Mathos34
+
+status-website:
+  baseUrl: /mlj-disponibilite
+  name: MLJ Digital, disponibilité
+  introTitle: "Disponibilité de **MLJ Digital**"
+  introMessage: "Relevé automatique toutes les 5 minutes, depuis l'extérieur, du site, de MLJ Assistant, de l'Espace et du CRM. L'historique complet est dans le [dépôt](https://github.com/Mathos34/mlj-disponibilite)."
+  navbar:
+    - title: État
+      href: /
+    - title: Historique (GitHub)
+      href: https://github.com/$OWNER/$REPO
+
+i18n:
+  activeIncidents: Incidents en cours
+  allSystemsOperational: Tous les services fonctionnent
+  pastIncidents: Incidents passés
+  liveStatus: État en direct
+  overallUptime: "Disponibilité globale : $UPTIME"
+  overallUptimeTitle: Disponibilité globale
+  averageResponseTime: "Temps de réponse moyen : $TIME ms"
+  averageResponseTimeTitle: Temps de réponse moyen
+  sevelDayResponseTime: Temps de réponse sur 7 jours
+  responseTimeMs: Temps de réponse (ms)
+  up: En ligne
+  down: Hors ligne
+  degraded: Dégradé

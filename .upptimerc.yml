@@ -31,13 +31,6 @@ sites:
       - 200
       - 307
 
-  # ESSAI TEMPORAIRE (16/11/2026) : code attendu impossible, pour vérifier qu'une panne ouvre bien une issue et
-  # qu'un courriel part. Retiré juste après.
-  - name: Essai de l'alerte (à ignorer)
-    url: https://www.mljdigital.fr/api/health
-    expectedStatusCodes:
-      - 418
-
 # Une panne ouvre une issue assignée : GitHub prévient par courriel (et sur l'application mobile). Les autres
 # personnes qui suivent le dépôt (« Watch ») reçoivent aussi chaque issue.
 assignees:
